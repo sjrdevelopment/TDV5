@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1799C3EA1AC6FD1E00404A6A /* ListItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1799C3E91AC6FD1E00404A6A /* ListItems.swift */; };
 		17C62A2A1AAC6AA00035F1C0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C62A291AAC6AA00035F1C0 /* AppDelegate.swift */; };
 		17C62A2D1AAC6AA00035F1C0 /* TDV5.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 17C62A2B1AAC6AA00035F1C0 /* TDV5.xcdatamodeld */; };
 		17C62A2F1AAC6AA00035F1C0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 17C62A2E1AAC6AA00035F1C0 /* ViewController.swift */; };
@@ -31,6 +32,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1799C3E91AC6FD1E00404A6A /* ListItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListItems.swift; sourceTree = "<group>"; };
 		17C62A241AAC6AA00035F1C0 /* TDV5.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TDV5.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		17C62A281AAC6AA00035F1C0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		17C62A291AAC6AA00035F1C0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 				17C62A351AAC6AA00035F1C0 /* LaunchScreen.xib */,
 				17C62A2B1AAC6AA00035F1C0 /* TDV5.xcdatamodeld */,
 				17C62A521AADEA3D0035F1C0 /* Lists.swift */,
+				1799C3E91AC6FD1E00404A6A /* ListItems.swift */,
 				17C62A271AAC6AA00035F1C0 /* Supporting Files */,
 			);
 			path = TDV5;
@@ -227,6 +230,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1799C3EA1AC6FD1E00404A6A /* ListItems.swift in Sources */,
 				17C62A511AADE7D00035F1C0 /* AddItemController.swift in Sources */,
 				17C62A531AADEA3D0035F1C0 /* Lists.swift in Sources */,
 				17C62A571AADFBDC0035F1C0 /* ListViewController.swift in Sources */,

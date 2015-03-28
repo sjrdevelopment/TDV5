@@ -17,7 +17,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Yall this be the list" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hRA-Dt-dIa">
-                                <rect key="frame" x="26" y="113" width="139" height="21"/>
+                                <rect key="frame" x="16" y="72" width="139" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You selected: " lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="U2P-05-ahc">
+                                <rect key="frame" x="23" y="101" width="108" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="List name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ux5-OJ-JFa">
+                                <rect key="frame" x="147" y="101" width="181" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -25,7 +37,16 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <navigationItem key="navigationItem" title="The list" id="eOF-6G-dU6"/>
+                    <navigationItem key="navigationItem" title="The list" id="eOF-6G-dU6">
+                        <barButtonItem key="rightBarButtonItem" title="Add list item" id="XjK-wZ-dDl">
+                            <connections>
+                                <action selector="addNewListItem:" destination="dCa-CU-MYl" id="mcf-8M-mH1"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="listNameLabel" destination="ux5-OJ-JFa" id="fH7-xB-kmE"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jQU-M8-hEo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -54,7 +75,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="dCa-CU-MYl" kind="push" id="96q-yx-Qto"/>
+                                    <segue destination="dCa-CU-MYl" kind="push" identifier="showListItemsView" id="96q-yx-Qto"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -64,9 +85,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Lists" id="JxX-Om-ccn">
-                        <barButtonItem key="rightBarButtonItem" title="Add new item" id="whb-MR-OFf">
+                        <barButtonItem key="rightBarButtonItem" title="Add new list" id="whb-MR-OFf">
                             <connections>
-                                <segue destination="M4K-kI-Cop" kind="show" id="d0w-iO-59Q"/>
+                                <segue destination="M4K-kI-Cop" kind="show" identifier="showAddItemView" id="d0w-iO-59Q"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -98,15 +119,15 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="New item" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fN-P8-DEo">
-                                <rect key="frame" x="23" y="72" width="73" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="New list name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fN-P8-DEo">
+                                <rect key="frame" x="23" y="72" width="109" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2HP-Rt-pX6">
-                                <rect key="frame" x="23" y="139" width="46" height="30"/>
-                                <state key="normal" title="Button">
+                                <rect key="frame" x="23" y="139" width="34" height="30"/>
+                                <state key="normal" title="Save">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
@@ -122,7 +143,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fIG-Bi-ffN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2379" y="-366"/>
+            <point key="canvasLocation" x="2379" y="-306"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="MG9-Ps-BvR">

@@ -7,12 +7,25 @@
 //
 
 import UIKit
+import CoreData
 
 class ListViewController: UIViewController {
-
+    
+    // Retreive the managedObjectContext from AppDelegate
+    let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
+    
+    var listItems = [ListItems]()
+    
+    var currentList:String = ""
+    
+    @IBOutlet weak var listNameLabel: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        listNameLabel.text = currentList
 
+        loadDataForList()
         // Do any additional setup after loading the view.
     }
 
@@ -21,6 +34,94 @@ class ListViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func loadDataForList() {
+        
+        // Create a new fetch request using the LogItem entity
+        let fetchRequest = NSFetchRequest(entityName: "ListItems")
+        
+        //predicate filter
+        fetchRequest.predicate = NSPredicate(format: "listName = %@", currentList)
+        
+        if let fetchResults = managedObjectContext!.executeFetchRequest(fetchRequest, error: nil) as? [ListItems] {
+            
+            listItems = fetchResults
+            
+        //    listItemsCount = fetchResults.count
+            
+            println("You have \(fetchResults.count) in this list")
+
+            
+        } else {
+            println("no data")
+        }
+
+    }
+    
+    // make data persist
+    func save() {
+        var error : NSError?
+        if(managedObjectContext!.save(&error) ) {
+            println(error?.localizedDescription)
+        }
+        
+        println("saved state")
+        loadDataForList()
+    }
+    
+    @IBAction func addNewListItem(sender: AnyObject) {
+            
+        let addItemAlertViewTag = 0
+        let addItemTextAlertViewTag = 1
+        
+        var stringPlaceholder = "this is placeholder"
+        
+        var titlePrompt = UIAlertController(title: "Enter List Title",
+            message: nil,
+            preferredStyle: .Alert)
+        
+        var titleTextField: UITextField?
+        titlePrompt.addTextFieldWithConfigurationHandler {
+            (textField) -> Void in
+            titleTextField = textField
+            textField.placeholder = "Title"
+        }
+        
+        titlePrompt.addAction(UIAlertAction(title: "Ok",
+            style: .Default,
+            handler: { (action) -> Void in
+                if let textField = titleTextField {
+                    if(countElements(textField.text) > 0) {
+                        
+                        println(textField.text)
+                        let newListItem = NSEntityDescription.insertNewObjectForEntityForName("ListItems", inManagedObjectContext: self.managedObjectContext!) as ListItems
+                        
+                        newListItem.listName = self.currentList
+                        newListItem.itemName = textField.text
+                        
+                        self.save()
+
+                        
+                    } else {
+                        // cancel item
+                    }
+                    
+                }
+        }))
+        
+        titlePrompt.addAction(UIAlertAction(title: "Cancel",
+            style: .Cancel,
+            handler: { (action) -> Void in
+                // cancel item
+        }))
+        
+        
+        self.presentViewController(titlePrompt,
+            animated: true,
+            completion: nil)
+            
+  
+
+    }
 
     /*
     // MARK: - Navigation

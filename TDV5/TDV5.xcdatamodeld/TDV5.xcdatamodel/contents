@@ -1,9 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="6254" systemVersion="14B25" minimumToolsVersion="Automatic" macOSVersion="Automatic" iOSVersion="Automatic">
+    <entity name="ListItems" representedClassName="ListItems" syncable="YES">
+        <attribute name="itemName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="listName" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
     <entity name="Lists" representedClassName="TDV5.Lists" syncable="YES">
         <attribute name="listName" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <elements>
         <element name="Lists" positionX="-54" positionY="-9" width="128" height="60"/>
+        <element name="ListItems" positionX="-54" positionY="0" width="128" height="75"/>
     </elements>
 </model>
