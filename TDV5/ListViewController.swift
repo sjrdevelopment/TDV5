@@ -9,14 +9,18 @@
 import UIKit
 import CoreData
 
-class ListViewController: UIViewController {
+class ListViewController: UIViewController, UITableViewDataSource {
     
     // Retreive the managedObjectContext from AppDelegate
     let managedObjectContext = (UIApplication.sharedApplication().delegate as AppDelegate).managedObjectContext
     
     var listItems = [ListItems]()
     
+    var listItemsCount:Int = 0
+    
     var currentList:String = ""
+    
+    @IBOutlet weak var listItemsTableView: UITableView!
     
     @IBOutlet weak var listNameLabel: UILabel!
     
@@ -46,11 +50,11 @@ class ListViewController: UIViewController {
             
             listItems = fetchResults
             
-        //    listItemsCount = fetchResults.count
+            listItemsCount = fetchResults.count
             
             println("You have \(fetchResults.count) in this list")
 
-            
+            listItemsTableView.reloadData();
         } else {
             println("no data")
         }
@@ -122,6 +126,38 @@ class ListViewController: UIViewController {
   
 
     }
+    
+    
+    
+    
+    // Table stuff
+
+    
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+        return 1
+    }
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return listItemsCount
+       
+    }
+    
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        var cell = tableView.dequeueReusableCellWithIdentifier("listItemCell", forIndexPath: indexPath) as UITableViewCell
+        
+        
+        cell.textLabel?.text = listItems[indexPath.row].itemName
+    
+        
+        return cell
+    }
+
+    
+    // END: table stuff
+    
+    
 
     /*
     // MARK: - Navigation

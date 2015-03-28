@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6254" systemVersion="14B25" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Nii-Ap-Gx8">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6247"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--The list-->
@@ -28,14 +29,38 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="List name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ux5-OJ-JFa">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="List name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ux5-OJ-JFa">
                                 <rect key="frame" x="147" y="101" width="181" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="nN4-aG-GdD">
+                                <rect key="frame" x="0.0" y="150" width="600" height="450"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="450" id="mL0-Pr-tIG"/>
+                                </constraints>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="listItemCell" id="EXQ-Ra-cbv">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="EXQ-Ra-cbv" id="BnU-f0-W45">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="dCa-CU-MYl" id="sgH-Lf-ewq"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="nN4-aG-GdD" firstAttribute="centerX" secondItem="oDp-zI-LOS" secondAttribute="centerX" id="ENx-AC-Ff4"/>
+                            <constraint firstItem="0hn-wG-Z0j" firstAttribute="top" secondItem="nN4-aG-GdD" secondAttribute="bottom" id="Xkp-Lx-dmd"/>
+                            <constraint firstItem="nN4-aG-GdD" firstAttribute="top" secondItem="ux5-OJ-JFa" secondAttribute="bottom" constant="28" id="Zqf-lA-NBp"/>
+                            <constraint firstItem="nN4-aG-GdD" firstAttribute="leading" secondItem="oDp-zI-LOS" secondAttribute="leadingMargin" constant="-16" id="fsc-FF-oVW"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="The list" id="eOF-6G-dU6">
                         <barButtonItem key="rightBarButtonItem" title="Add list item" id="XjK-wZ-dDl">
@@ -45,6 +70,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="listItemsTableView" destination="nN4-aG-GdD" id="PJI-b9-8xm"/>
                         <outlet property="listNameLabel" destination="ux5-OJ-JFa" id="fH7-xB-kmE"/>
                     </connections>
                 </viewController>
